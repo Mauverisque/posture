@@ -191,6 +191,7 @@ class MainWindow(QWidget):
         bxer = 0
         global cxer
         cxer = 0
+        self.Thread.stop()
 
 class Thread(QThread):
     ImageUpdate = pyqtSignal(QImage)
@@ -282,7 +283,7 @@ class Thread(QThread):
                         cv2.putText(Image, time_string_bad, (10, h - 10), font, 1, dark_red, 2)
 
                     if bad_time > 2:
-                        playsound('C:/posture/fail.mp3')
+                        playsound('C:/posture/fail.mp3', False)
 
                 if ex == 1:
                     if lm != None:
